@@ -1,6 +1,8 @@
 const fs = require('fs');
 
-const readerStream = fs.createReadStream('landscape.jpg');
+const readerStream = fs.createReadStream('landscape.jpg', {
+  highWaterMark: 65536 //  This is the default size of the buffer
+});
 const writerStream = fs.createWriteStream('landscape-copy.jpg');
 
 readerStream.on('data', fragment => {
