@@ -13,7 +13,8 @@ const http = require('http');
 // });
 
 var post_options = {
-  host: 'http://localhost:3000',
+  host: 'localhost',
+  port: 3000,
   path: '/api/items',
   method: 'GET'
 };
