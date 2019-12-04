@@ -8,6 +8,11 @@ class UpperCaseTransformer extends Transform {
 
   _transform(fragment, encoding, callback) {
     this.push(fragment.toString().toUpperCase());
+    callback();
+  }
+
+  _final() {
+    this.push(null);
   }
 }
 
