@@ -10,7 +10,8 @@ http
   .createServer((req, res) => {
     console.log('Request arrived');
     res.writeHead(200);
-    res.write('Hello');
+    res.write('<h2>Hello from Node</h2>');
+    res.write('<h2>Another header</h2>');
     res.end();
   })
   .listen(3000);
