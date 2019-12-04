@@ -5,13 +5,14 @@ const readerStream = fs.createReadStream('landscape.jpg');
 
 //  Manually configuring the write buffer size to mitigate the backpressure issues:
 const writerStream = fs.createWriteStream('landscape-copy.jpg', {
-  highWaterMark: 32648 //  any arbitrary bytes; beware of memory impact!
+  highWaterMark: 65536 //  any arbitrary bytes; beware of memory impact!
 });
 
 readerStream.on('data', fragment => {
   const isFull = writerStream.write(fragment);
 
   if (isFull) {
+    console.log('Pausing the reader stream due to backpressure');
     readerStream.pause();
   }
 });
